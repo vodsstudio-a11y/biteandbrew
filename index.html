@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Bite & Brew - Good Food. Good Mood.">
+
+    <title>Bite & Brew | Home</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff8e8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #d71920;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            max-width: 900px;
+            margin: auto;
+            padding: 15px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: none;
+            background: #b91218;
+            padding: 8px 20px;
+        }
+
+        nav.open {
+            display: block;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 11px 0;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffc928;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: #d71920;
+            color: white;
+            text-align: center;
+            padding: 70px 20px 65px;
+        }
+
+        .hero .emoji {
+            font-size: 55px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.1;
+            margin: 12px 0;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffc928;
+            color: #222;
+            text-decoration: none;
+            border-radius: 9px;
+            padding: 14px 24px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #ffdb55;
+        }
+
+        /* PROMO */
+
+        .promo {
+            background: #ffc928;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .promo h2 {
+            color: #d71920;
+            font-size: 20px;
+        }
+
+        /* SECTIONS */
+
+        section {
+            max-width: 900px;
+            margin: auto;
+            padding: 55px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #d71920;
+            margin-bottom: 12px;
+            font-size: 30px;
+        }
+
+        .about {
+            font-size: 17px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: white;
+        }
+
+        .contact-box {
+            background: #fff8e8;
+            border-radius: 14px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .contact-box p {
+            margin: 8px 0;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #d71920;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        .small {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            🍔 Bite & Brew
+        </div>
+
+        <button
+            class="menu-btn"
+            onclick="toggleNav()"
+            aria-label="Open navigation">
+            ☰
+        </button>
+
+    </div>
+
+    <nav id="nav">
+
+        <a href="index.html">
+            🏠 Home
+        </a>
+
+        <a href="menu.html">
+            🍔 Menu
+        </a>
+
+        <a href="payment.html">
+            💳 Checkout
+        </a>
+
+        <a href="#about">
+            ℹ️ About
+        </a>
+
+        <a href="#contact">
+            📞 Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="emoji">
+            🍔☕
+        </div>
+
+        <h1>
+            Good Food.<br>
+            Good Mood.
+        </h1>
+
+        <p>
+            Affordable favorites made for every moment.
+        </p>
+
+        <a
+            class="btn"
+            href="menu.html">
+            ORDER NOW
+        </a>
+
+    </section>
+
+
+    <!-- PROMO -->
+
+    <div class="promo">
+
+        <h2>
+            🔥 TODAY'S SPECIAL
+        </h2>
+
+        <p>
+            Classic Burger + Crispy Fries —
+            Only ₱169!
+        </p>
+
+    </div>
+
+
+    <!-- ABOUT -->
+
+    <section
+        id="about"
+        class="about">
+
+        <h2>
+            About Bite & Brew
+        </h2>
+
+        <p>
+            Bite & Brew is a simple food and beverage
+            ordering website focused on delicious meals,
+            affordable prices, and a smooth customer
+            experience.
+        </p>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section
+        id="contact"
+        class="contact">
+
+        <h2>
+            Contact Us
+        </h2>
+
+        <div class="contact-box">
+
+            <p>
+                📱 0917-123-4567
+            </p>
+
+            <p>
+                📧 biteandbrew@email.com
+            </p>
+
+            <p>
+                📍 Philippines
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        <strong>
+            🍔 Bite & Brew
+        </strong>
+    </p>
+
+    <p>
+        Good Food. Good Mood.
+    </p>
+
+    <p class="small">
+        © 2026 Bite & Brew. All rights reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleNav() {
+
+    document
+        .getElementById("nav")
+        .classList
+        .toggle("open");
+
+}
+
+</script>
+
+</body>
+</html>

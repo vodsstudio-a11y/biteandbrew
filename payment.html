@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Bite & Brew | Payment</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: #fff8e8;
+
+            color: #222;
+
+            padding-bottom: 30px;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #d71920;
+
+            color: white;
+
+            padding: 17px 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+
+            font-weight: bold;
+        }
+
+        .back {
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        /* TITLE */
+
+        .title {
+            text-align: center;
+
+            padding: 35px 20px 20px;
+        }
+
+        .title h1 {
+            color: #d71920;
+
+            font-size: 32px;
+
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #555;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            padding: 20px;
+        }
+
+        .box {
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.10);
+        }
+
+        .box h2 {
+            color: #d71920;
+
+            font-size: 21px;
+
+            margin-bottom: 15px;
+        }
+
+        /* ORDER */
+
+        .order {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-name {
+            font-weight: bold;
+        }
+
+        .quantity {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+        .quantity button {
+            width: 28px;
+
+            height: 28px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #d71920;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .item-total {
+            font-weight: bold;
+
+            color: #d71920;
+        }
+
+        .empty {
+            text-align: center;
+
+            color: #777;
+
+            padding: 20px;
+        }
+
+        /* TOTAL */
+
+        .total {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 20px;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            color: #d71920;
+        }
+
+        /* INPUTS */
+
+        input[type="text"],
+        input[type="tel"] {
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin-bottom: 12px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+        }
+
+        /* PAYMENT */
+
+        .payment-option {
+
+            display: block;
+
+            background: #fff8e8;
+
+            padding: 15px;
+
+            margin-bottom: 10px;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+        }
+
+        .payment-option input {
+            margin-right: 8px;
+        }
+
+        /* BUTTON */
+
+        .place-order {
+
+            width: 100%;
+
+            padding: 16px;
+
+            background: #d71920;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 30px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .place-order:active {
+            transform: scale(0.97);
+        }
+
+        /* SUCCESS */
+
+        .success {
+
+            display: none;
+
+            background: #e8f8e8;
+
+            color: #176b17;
+
+            padding: 18px;
+
+            border-radius: 12px;
+
+            margin-top: 18px;
+
+            text-align: center;
+
+            line-height: 1.6;
+
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #a90f15;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 18px;
+
+            margin-top: 30px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        🍔 Bite & Brew
+    </div>
+
+    <a href="menu.html"
+       class="back">
+
+        ← MENU
+
+    </a>
+
+</header>
+
+
+<section class="title">
+
+    <h1>
+        💳 Your Order
+    </h1>
+
+    <p>
+        Review your order before payment.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- ORDER SUMMARY -->
+
+<div class="box">
+
+    <h2>
+        🛒 Order Summary
+    </h2>
+
+    <div id="orders"></div>
+
+    <div class="total">
+
+        <span>
+            TOTAL
+        </span>
+
+        <span id="total">
+            ₱0
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- CUSTOMER -->
+
+<div class="box">
+
+    <h2>
+        👤 Customer Information
+    </h2>
+
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Full Name">
+
+    <input
+        type="text"
+        id="customerAddress"
+        placeholder="Delivery Address">
+
+    <input
+        type="tel"
+        id="customerPhone"
+        placeholder="Contact Number">
+
+</div>
+
+
+<!-- PAYMENT -->
+
+<div class="box">
+
+    <h2>
+        💳 Payment Method
+    </h2>
+
+
+    <label class="payment-option">
+
+        <input
+            type="radio"
+            name="payment"
+            value="GCash">
+
+        📱 GCash
+
+    </label>
+
+
+    <label class="payment-option">
+
+        <input
+            type="radio"
+            name="payment"
+            value="Cash on Delivery">
+
+        💵 Cash on Delivery
+
+    </label>
+
+
+    <label class="payment-option">
+
+        <input
+            type="radio"
+            name="payment"
+            value="Pay at Store">
+
+        🏪 Pay at Store
+
+    </label>
+
+</div>
+
+
+<button
+    class="place-order"
+    onclick="placeOrder()">
+
+    ✅ PLACE ORDER
+
+</button>
+
+
+<div
+    class="success"
+    id="success">
+
+    🎉 ORDER CONFIRMED!
+
+    <br><br>
+
+    Thank you for ordering from
+    <strong>Bite & Brew!</strong>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+    © 2026 Bite & Brew.
+    All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+
+/* LOAD CART */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("biteBrewCart")
+    ) || [];
+
+
+/* DISPLAY CART */
+
+function displayCart() {
+
+    let container =
+        document.getElementById("orders");
+
+    let totalElement =
+        document.getElementById("total");
+
+
+    container.innerHTML = "";
+
+
+    if (cart.length === 0) {
+
+        container.innerHTML =
+            '<div class="empty">' +
+            'Your order is empty.<br><br>' +
+            '<a href="menu.html">Go to Menu</a>' +
+            '</div>';
+
+        totalElement.innerText = "₱0";
+
+        return;
+    }
+
+
+    let total = 0;
+
+
+    cart.forEach(
+        function(item, index) {
+
+
+            let itemTotal =
+                item.price *
+                item.quantity;
+
+
+            total += itemTotal;
+
+
+            let div =
+                document.createElement("div");
+
+
+            div.className = "order";
+
+
+            div.innerHTML = `
+
+                <div>
+
+                    <div class="order-name">
+                        ${item.name}
+                    </div>
+
+                    <small>
+                        ₱${item.price} each
+                    </small>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <button
+                        onclick="decrease(${index})">
+
+                        −
+
+                    </button>
+
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+
+                    <button
+                        onclick="increase(${index})">
+
+                        +
+
+                    </button>
+
+                </div>
+
+
+                <div class="item-total">
+
+                    ₱${itemTotal}
+
+                </div>
+
+            `;
+
+
+            container.appendChild(div);
+
+        }
+    );
+
+
+    totalElement.innerText =
+        "₱" + total;
+
+}
+
+
+/* INCREASE */
+
+function increase(index) {
+
+    cart[index].quantity++;
+
+    saveCart();
+
+    displayCart();
+
+}
+
+
+/* DECREASE */
+
+function decrease(index) {
+
+    cart[index].quantity--;
+
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+    }
+
+
+    saveCart();
+
+    displayCart();
+
+}
+
+
+/* SAVE */
+
+function saveCart() {
+
+    localStorage.setItem(
+        "biteBrewCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+/* PLACE ORDER */
+
+function placeOrder() {
+
+
+    if (cart.length === 0) {
+
+        alert(
+            "Your order is empty."
+        );
+
+        return;
+
+    }
+
+
+    let name =
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
+
+    let address =
+        document.getElementById(
+            "customerAddress"
+        ).value.trim();
+
+
+    let phone =
+        document.getElementById(
+            "customerPhone"
+        ).value.trim();
+
+
+    let payment =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        );
+
+
+    if (
+        name === "" ||
+        address === "" ||
+        phone === ""
+    ) {
+
+        alert(
+            "Please complete your customer information."
+        );
+
+        return;
+
+    }
+
+
+    if (!payment) {
+
+        alert(
+            "Please choose a payment method."
+        );
+
+        return;
+
+    }
+
+
+    let total =
+        cart.reduce(
+            function(sum, item) {
+
+                return sum +
+                    item.price *
+                    item.quantity;
+
+            },
+            0
+        );
+
+
+    alert(
+
+        "ORDER CONFIRMED!\n\n" +
+
+        "Customer: " +
+        name + "\n\n" +
+
+        "Payment: " +
+        payment.value + "\n\n" +
+
+        "Total: ₱" +
+        total
+
+    );
+
+
+    document.getElementById(
+        "success"
+    ).style.display = "block";
+
+
+    /* CLEAR CART */
+
+    cart = [];
+
+    saveCart();
+
+    displayCart();
+
+}
+
+
+displayCart();
+
+
+</script>
+
+
+</body>
+
+</html>

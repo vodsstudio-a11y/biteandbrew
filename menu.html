@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Bite & Brew | Menu</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: #fff8e8;
+
+            color: #222;
+
+            padding-bottom: 90px;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #d71920;
+
+            color: white;
+
+            padding: 17px 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 21px;
+
+            font-weight: bold;
+        }
+
+        .home {
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        /* TITLE */
+
+        .title {
+            text-align: center;
+
+            padding: 35px 20px 20px;
+        }
+
+        .title h1 {
+            color: #d71920;
+
+            font-size: 34px;
+
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #555;
+        }
+
+        /* MENU */
+
+        .menu {
+            padding: 20px;
+        }
+
+        .food-card {
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            margin-bottom: 18px;
+
+            text-align: center;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.10);
+
+            transition: 0.25s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .food-icon {
+            font-size: 60px;
+
+            margin-bottom: 10px;
+        }
+
+        .food-card h2 {
+            font-size: 22px;
+
+            margin-bottom: 8px;
+        }
+
+        .food-card p {
+            color: #555;
+
+            line-height: 1.5;
+        }
+
+        .price {
+            color: #d71920;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            margin: 12px;
+        }
+
+        .add-btn {
+            background: #d71920;
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .add-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* CART BUTTON */
+
+        .cart-button {
+            position: fixed;
+
+            bottom: 18px;
+
+            left: 18px;
+
+            right: 18px;
+
+            background: #ffc928;
+
+            color: #222;
+
+            padding: 16px;
+
+            border-radius: 30px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.25);
+
+            z-index: 20;
+        }
+
+        footer {
+            background: #a90f15;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 18px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        🍔 Bite & Brew
+    </div>
+
+    <a href="index.html"
+       class="home">
+
+        ← HOME
+
+    </a>
+
+</header>
+
+
+<section class="title">
+
+    <h1>
+        🍔 Our Menu
+    </h1>
+
+    <p>
+        Choose your favorite food and drinks.
+    </p>
+
+</section>
+
+
+<section class="menu">
+
+
+<!-- BURGER -->
+
+<div class="food-card">
+
+    <div class="food-icon">
+        🍔
+    </div>
+
+    <h2>
+        Classic Burger
+    </h2>
+
+    <p>
+        Juicy burger with fresh vegetables
+        and our special sauce.
+    </p>
+
+    <div class="price">
+        ₱120
+    </div>
+
+    <button
+        class="add-btn"
+        onclick="addToCart('Classic Burger', 120)">
+
+        ADD TO ORDER
+
+    </button>
+
+</div>
+
+
+<!-- FRIES -->
+
+<div class="food-card">
+
+    <div class="food-icon">
+        🍟
+    </div>
+
+    <h2>
+        Crispy Fries
+    </h2>
+
+    <p>
+        Golden and crispy fries
+        perfect for sharing.
+    </p>
+
+    <div class="price">
+        ₱80
+    </div>
+
+    <button
+        class="add-btn"
+        onclick="addToCart('Crispy Fries', 80)">
+
+        ADD TO ORDER
+
+    </button>
+
+</div>
+
+
+<!-- COFFEE -->
+
+<div class="food-card">
+
+    <div class="food-icon">
+        🥤
+    </div>
+
+    <h2>
+        Iced Coffee
+    </h2>
+
+    <p>
+        Cold, creamy and refreshing
+        coffee for your day.
+    </p>
+
+    <div class="price">
+        ₱90
+    </div>
+
+    <button
+        class="add-btn"
+        onclick="addToCart('Iced Coffee', 90)">
+
+        ADD TO ORDER
+
+    </button>
+
+</div>
+
+
+<!-- CHICKEN -->
+
+<div class="food-card">
+
+    <div class="food-icon">
+        🍗
+    </div>
+
+    <h2>
+        Chicken Meal
+    </h2>
+
+    <p>
+        Crispy fried chicken served
+        with rice and gravy.
+    </p>
+
+    <div class="price">
+        ₱149
+    </div>
+
+    <button
+        class="add-btn"
+        onclick="addToCart('Chicken Meal', 149)">
+
+        ADD TO ORDER
+
+    </button>
+
+</div>
+
+
+</section>
+
+
+<a href="payment.html"
+   class="cart-button">
+
+    🛒 VIEW ORDER
+    (<span id="cartCount">0</span>)
+
+</a>
+
+
+<footer>
+
+    © 2026 Bite & Brew.
+    All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+
+/* GET EXISTING CART */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("biteBrewCart")
+    ) || [];
+
+
+/* ADD FOOD */
+
+function addToCart(name, price) {
+
+    let existing =
+        cart.find(
+            item => item.name === name
+        );
+
+
+    if (existing) {
+
+        existing.quantity++;
+
+    } else {
+
+        cart.push({
+
+            name: name,
+
+            price: price,
+
+            quantity: 1
+
+        });
+
+    }
+
+
+    saveCart();
+
+    updateCount();
+
+
+    alert(
+        name + " added to your order!"
+    );
+
+}
+
+
+/* SAVE CART */
+
+function saveCart() {
+
+    localStorage.setItem(
+        "biteBrewCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+/* UPDATE CART COUNT */
+
+function updateCount() {
+
+    let count = 0;
+
+
+    cart.forEach(function(item) {
+
+        count += item.quantity;
+
+    });
+
+
+    document.getElementById(
+        "cartCount"
+    ).innerText = count;
+
+}
+
+
+updateCount();
+
+
+</script>
+
+
+</body>
+
+</html>
